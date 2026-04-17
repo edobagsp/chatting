@@ -24,6 +24,25 @@ const currentUserDisplay = document.getElementById('current-user-display');
 const chatContainer = document.getElementById('chat-container');
 const messageForm = document.getElementById('message-form');
 const messageInput = document.getElementById('message-input');
+const installPwaBtn = document.getElementById('install-pwa-btn');
+
+// PWA Install Logic
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installPwaBtn.classList.remove('hidden');
+});
+
+installPwaBtn.addEventListener('click', async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log(`User response to the install prompt: ${outcome}`);
+    deferredPrompt = null;
+    installPwaBtn.classList.add('hidden');
+  }
+});
 
 // Initialize the app visually
 if (currentUser) {

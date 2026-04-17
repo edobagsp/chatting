@@ -85,15 +85,22 @@ body {
 .header-content {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
-.avatar img {
-  width: 45px;
-  height: 45px;
+#install-pwa-btn {
+  background: linear-gradient(to bottom, #eeeeee, #cccccc);
+  color: #333;
+  border: 1px solid #999;
+  padding: 5px 8px;
   border-radius: 4px;
-  border: 1px solid #555;
-  margin-right: 10px;
-  object-fit: cover;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+#install-pwa-btn:active {
+  background: #bbb;
 }
 
 .header-info {
@@ -304,22 +311,23 @@ body {
    We will just rely on the browser's default cursor. */
 
 #send-btn {
-  background: transparent;
-  border: none;
-  width: 36px;
-  height: 36px;
+  background: linear-gradient(to bottom, #eeeeee, #cccccc);
+  color: #222;
+  border: 1px solid #999;
+  min-width: 65px;
+  height: 38px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: bold;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   outline: none;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
-.smiley-icon {
-  font-size: 26px;
-  filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.5));
-}
-
-#send-btn:active .smiley-icon {
-  transform: scale(0.9);
+#send-btn:active {
+  background: #bbb;
+  transform: scale(0.98);
 }

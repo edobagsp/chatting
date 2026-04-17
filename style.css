@@ -8,13 +8,14 @@ body {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   background-color: #000; /* Outer phone bezel / background */
   color: #fff;
-  height: 100vh;
+  height: 100dvh;
   margin: 0;
   overflow: hidden;
+  touch-action: pan-x pan-y;
 }
 
 .screen {
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -289,11 +290,11 @@ body {
 
 #message-input {
   width: 100%;
-  padding: 8px;
+  padding: 12px 8px; /* Bigger padding for better mobile touch */
   border: 1px solid #ccc;
   background: #fff;
   color: #000;
-  font-size: 15px;
+  font-size: 16px; /* 16px prevents iOS auto-zoom on focus */
   outline: none;
   font-family: Arial, sans-serif;
   box-shadow: inset 0px 1px 3px rgba(0,0,0,0.2);

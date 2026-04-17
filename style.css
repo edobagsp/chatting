@@ -96,15 +96,20 @@ body {
   background: linear-gradient(to bottom, #eeeeee, #cccccc);
   color: #333;
   border: 1px solid #999;
-  padding: 5px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: bold;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
 }
 #install-pwa-btn:active {
   background: #bbb;
+  transform: scale(0.9);
 }
 
 .header-info {

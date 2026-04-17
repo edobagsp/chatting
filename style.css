@@ -22,6 +22,7 @@ body {
   max-width: 500px; /* To resemble a phone screen on desktop */
   margin: 0 auto;
   background-color: #5b5b5b; /* Solid grey background of the chat */
+  overflow: hidden; /* Ensure screen itself doesn't scroll */
 }
 
 .hidden {
@@ -33,6 +34,7 @@ body {
   justify-content: center;
   align-items: center;
   background: linear-gradient(#1f2124, #0b0c0d);
+  overflow-y: auto; /* Allow login to scroll if small screen */
 }
 
 .login-container {
@@ -44,6 +46,7 @@ body {
   width: 90%;
   max-width: 400px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  margin: 20px 0;
 }
 
 .login-container h1 {
@@ -80,6 +83,7 @@ body {
   border-bottom: 2px solid #222;
   box-shadow: 0 2px 4px rgba(0,0,0,0.5);
   z-index: 10;
+  flex-shrink: 0; /* Header won't shrink */
 }
 
 .header-content {
@@ -133,6 +137,7 @@ body {
 /* --- CHAT CONTAINER --- */
 #chat-container {
   flex: 1;
+  min-height: 0; /* CRITICAL for flex scrolling */
   /* BBM gradient grey background */
   background: linear-gradient(to bottom, #d0d0d0, #666666);
   overflow-y: auto;

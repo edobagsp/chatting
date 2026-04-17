@@ -28,6 +28,17 @@ const installPwaBtn = document.getElementById('install-pwa-btn');
 
 // PWA Install Logic
 let deferredPrompt;
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+if (!isStandalone) {
+  if (isIOS) {
+    // On iOS, we show the button with a hint because beforeinstallprompt doesn't fire
+    installPwaBtn.textContent = 'Install App';
+    installPwaBtn.classList.remove('hidden');
+  }
+}
+
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
@@ -35,12 +46,19 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 installPwaBtn.addEventListener('click', async () => {
+  if (isIOS) {
+    alert('On iPhone: Tap the "Share" icon (square with arrow) and select "Add to Home Screen" to install.');
+    return;
+  }
+  
   if (deferredPrompt) {
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
     console.log(`User response to the install prompt: ${outcome}`);
     deferredPrompt = null;
     installPwaBtn.classList.add('hidden');
+  } else {
+    alert('To install: Use your browser menu and select "Install App" or "Add to Home Screen".');
   }
 });
 

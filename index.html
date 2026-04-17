@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Retro Chat</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <!-- Login Screen -->
+    <div id="login-screen" class="screen">
+      <div class="login-container">
+        <h1>Retro Chat</h1>
+        <p>Set Your PIN/Username</p>
+        <input type="text" id="username-input" placeholder="Enter your name..." maxlength="20" />
+        <button id="login-btn">Masuk</button>
+      </div>
+    </div>
+
+    <!-- Chat Screen -->
+    <div id="chat-screen" class="screen hidden">
+      <header class="chat-header">
+        <div class="header-content">
+          <div class="avatar">
+            <img src="https://ui-avatars.com/api/?name=User&background=random&color=fff" alt="Avatar" id="header-avatar" />
+          </div>
+          <div class="header-info">
+            <div class="header-name-row">
+              <span class="bbm-icon">💬</span>
+              <h2 id="current-user-display">MyName</h2>
+            </div>
+            <span class="status">Loving BlackBerry</span>
+          </div>
+        </div>
+      </header>
+
+      <main id="chat-container">
+        <!-- Messages will be injected here -->
+      </main>
+
+      <footer class="chat-footer">
+        <form id="message-form">
+          <div class="input-wrapper">
+            <input type="text" id="message-input" autocomplete="off" />
+          </div>
+          <button type="submit" id="send-btn">
+            <span class="smiley-icon">😊</span>
+          </button>
+        </form>
+      </footer>
+    </div>
+    
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

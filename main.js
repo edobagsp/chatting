@@ -31,34 +31,31 @@ let deferredPrompt;
 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
 
-if (!isStandalone) {
-  if (isIOS) {
-    // On iOS, we show the button with a hint because beforeinstallprompt doesn't fire
-    installPwaBtn.textContent = 'Install App';
-    installPwaBtn.classList.remove('hidden');
-  }
+// Sembunyikan tombol jika sudah terinstal
+if (isStandalone) {
+  installPwaBtn.style.display = 'none';
 }
 
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  installPwaBtn.classList.remove('hidden');
 });
 
 installPwaBtn.addEventListener('click', async () => {
   if (isIOS) {
-    alert('On iPhone: Tap the "Share" icon (square with arrow) and select "Add to Home Screen" to install.');
+    alert('Cara Install di iPhone: \n1. Klik tombol "Share" (kotak dengan panah atas).\n2. Pilih "Add to Home Screen" atau "Tambahkan ke Layar Utama".');
     return;
   }
   
   if (deferredPrompt) {
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
-    console.log(`User response to the install prompt: ${outcome}`);
+    if (outcome === 'accepted') {
+      installPwaBtn.style.display = 'none';
+    }
     deferredPrompt = null;
-    installPwaBtn.classList.add('hidden');
   } else {
-    alert('To install: Use your browser menu and select "Install App" or "Add to Home Screen".');
+    alert('Cara Install: \nKlik menu titik tiga (⋮) di pojok kanan atas browser Anda, lalu pilih "Instal Aplikasi" atau "Tambahkan ke Layar Utama".');
   }
 });
 
